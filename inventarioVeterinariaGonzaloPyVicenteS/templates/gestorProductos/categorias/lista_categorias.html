@@ -1,0 +1,71 @@
+{% extends 'gestorProductos/base_productos.html'%}
+
+{% block titulo %}
+lista_categorias
+{% endblock %}
+
+{% block contenido %}
+<body>
+    <h1>Lista de Categorías</h1>
+    <a href="{% url 'gestor_usuarios' %}" class="btn btn-primary" >Volver</a>
+
+<div class="container">
+
+    <table id="example" class="table table-striped" style="width:100%">
+        <thead class="table-info">
+            <tr>
+                <th>#</th>
+                <th>Categoria</th>
+                <th>Descripcion</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody class="table-light" >
+            {% if categorias %}
+            {% for categoria in categorias %}
+                    <tr>
+                        <td>{{ categoria.id }}</td>
+                        <td><a href="{% url 'detalle_categoria' categoria.pk %}">{{ categoria.nombre }}</a></td>
+                        <td>{{ categoria.descripcion }}</td>
+                        <td>
+                            <a href="{% url 'editar_categoria' categoria.pk %}" class="btn btn-warning" >Editar</a>
+                            <!-- hacen refencia desde lafk para traer lso datos-->
+                            <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal" data-url="{% url 'eliminar_categoria' categoria.pk %}">
+                                Eliminar
+                            </button>                   
+                        </td>
+                    </tr>
+                {% endfor %}
+            {% else %}
+                <tr>
+                    <td colspan="7">No hay productos disponibles.</td>
+                </tr>
+            {% endif %}
+        </tbody>
+    </table>
+    
+    <!-- referenciamos url de crear producto-->
+    <a href="{% url 'crear_categoria' %}" class="btn btn-success">Crear nueva categoria</a>
+    <!-- crear button referencia a categorias adema acceso solo de admin 👍-->
+
+    <!-- Modal de confirmación bs5-->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Confirmar eliminación</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                ¿Estás seguro de que deseas eliminar esta categoria?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <a id="confirmDeleteButton" class="btn btn-danger" href="#">Eliminar</a>
+            </div>
+        </div>
+    </div>
+    </div>
+
+{% endblock %}
+

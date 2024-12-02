@@ -1,0 +1,28 @@
+{% extends 'gestorProductos/base_productos.html'%}
+
+{% block titulo %}
+editar producto
+{% endblock %}
+
+{% block contenido %}
+
+<head>
+    <title>{% if form.instance.pk %}Editar{% else %}Crear{% endif %} Producto</title>
+    <!--ojo vicente, si la instancia es editar cargara ese titlo sino crear, ademas toma la primary key de cada dato-->
+</head>
+<body>
+    <h1>{% if form.instance.pk %}Editar{% else %}Crear{% endif %} Producto</h1>
+    <a href="{% url 'lista_productos' %}" class="btn btn-primary" >Volver</a>
+    <br><br>
+     <!--si la instancia es editar cargara ese texto sino crear-->
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-success" >{% if form.instance.pk %}Actualizar{% else %}Crear{% endif %}</button>
+         <!--si la instancia es editar cargara ese texto en el button sino crear-->
+    </form>
+
+</body>
+
+{% endblock %}
+

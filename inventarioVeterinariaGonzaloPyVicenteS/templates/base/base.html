@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="utf-8">
+    <title>{% block titulo %}
+        TITULO BASE
+    {% endblock %}</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Free HTML Templates" name="keywords">
+    <meta content="Free HTML Templates" name="description">
+
+    <!-- Favicon -->
+    <link href="{% static 'img/favicon.ico' %}" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet"> 
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Flaticon Font -->
+    <link href="{% static 'lib/flaticon/font/flaticon.css' %}" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="{% static 'lib/owlcarousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+    <link href="{% static 'lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css' %}" rel="stylesheet" />
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+</head>
+
+<body>
+    <!--Barra superior-->
+    
+            <div class="col-lg-4">
+                <a href="" class="navbar-brand d-none d-lg-block">
+                    <h1 class="m-0 display-5 text-capitalize"><span class="text-primary">Veterinaria</span>G&V</h1>
+                </a>
+            </div>
+            
+
+
+    <!-- Navbar Start -->
+    <div class="container-fluid p-0">
+        <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-3 py-lg-0 px-lg-5">
+            <a href="" class="navbar-brand d-block d-lg-none">
+                <h1 class="m-0 display-5 text-capitalize font-italic text-white"><span class="text-primary">Safety</span>First</h1>
+            </a>
+            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-between px-3" id="navbarCollapse">
+                <div class="navbar-nav mr-auto py-0">
+                    <a href="{% url 'home' %}" class="nav-item nav-link active">Inicio</a>
+                    <a href="#sobre-nosotros" class="nav-item nav-link">Acerca de</a>
+                    <a href="#nuestros_servicios" class="nav-item nav-link">Service</a>
+                    <div class="nav-item dropdown">
+                        <div class="dropdown-menu rounded-0 m-0">
+                            <a href="blog.html" class="dropdown-item">Blog Grid</a>
+                            <a href="single.html" class="dropdown-item">Blog Detail</a>
+                        </div>
+                    </div>
+                </div>
+                {% if user.is_authenticated %}
+                <a href="{% url 'gestor_usuarios' %}" class="btn btn-lg btn-primary px-3 d-none d-lg-block">Panel Administrativo</a>
+                {% else %}
+                <a href="{% url 'login' %}" class="btn btn-lg btn-primary px-3 d-none d-lg-block">Log in</a>
+                {% endif %}
+            </div>
+        </nav>
+    </div>
+    <!-- Navbar End -->
+
+
+    <!-- inmicio-->
+    <div class="container-fluid p-0">
+        <div id="header-carousel" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img class="w-100" src="{% static 'img/carousel-3.jpg' %}" alt="Image">
+                    <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                        <div class="p-3" style="max-width: 900px;">
+                            <h3 class="text-white mb-3 d-none d-sm-block">Los mejores de la region</h3>
+                            <h1 class="display-3 text-white mb-3">Cuidamos a tu mascota como si fuera nuestra</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Services Start -->
+    <div id="nuestros_servicios" class="container-fluid bg-light pt-5">
+        <div class="container py-5">
+            <div class="d-flex flex-column text-center mb-5">
+                <h4 class="text-secondary mb-3">Nuestros servicios</h4>
+                <h1 class="display-4 m-0"><span class="text-primary">Mejores</span> Servicios para mascota</h1>
+            </div>
+            <div class="row pb-3">
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="d-flex flex-column text-center bg-white mb-2 p-3 p-sm-5">
+                        <h3 class="flaticon-house display-3 font-weight-normal text-secondary mb-3"></h3>
+                        <h3 class="mb-3">Alojamiento de mascotas</h3>
+                        <p>Cuidamos a tu mascota hasta 2 semanas, para que puedas salir sin preocupaciones</p>
+                        <a class="text-uppercase font-weight-bold" href=""></a>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="d-flex flex-column text-center bg-white mb-2 p-3 p-sm-5">
+                        <h3 class="flaticon-food display-3 font-weight-normal text-secondary mb-3"></h3>
+                        <h3 class="mb-3">
+                            Alimentación de mascotas</h3>
+                        <p>Los mejores alimentos para tu peludo</p>
+                        <a class="text-uppercase font-weight-bold" href=""></a>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="d-flex flex-column text-center bg-white mb-2 p-3 p-sm-5">
+                        <h3 class="flaticon-grooming display-3 font-weight-normal text-secondary mb-3"></h3>
+                        <h3 class="mb-3">Aseo de mascotas</h3>
+                        <p>Nos cuidamos de la apariencia y salud de las mascotas ademas de dejarlo con un look genial</p>
+                        <a class="text-uppercase font-weight-bold" href=""></a>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="d-flex flex-column text-center bg-white mb-2 p-3 p-sm-5">
+                        <h3 class="flaticon-cat display-3 font-weight-normal text-secondary mb-3"></h3>
+                        <h3 class="mb-3">Entrenamiento de mascotas</h3>
+                        <p>Si tu mascota tiene comportamientos no deseados, podemos ayudar a corregirlos!
+                        </p>
+                        <a class="text-uppercase font-weight-bold" href=""></a>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="d-flex flex-column text-center bg-white mb-2 p-3 p-sm-5">
+                        <h3 class="flaticon-dog display-3 font-weight-normal text-secondary mb-3"></h3>
+                        <h3 class="mb-3">Ejercicios para mascota</h3>
+                        <p>Por que solo tu puedes ir al gym? y ellos? tenemos ejercicios para mantener la salud cardiovascular de tus mascotas</p>
+                        <a class="text-uppercase font-weight-bold" href=""></a>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="d-flex flex-column text-center bg-white mb-2 p-3 p-sm-5">
+                        <h3 class="flaticon-vaccine display-3 font-weight-normal text-secondary mb-3"></h3>
+                        <h3 class="mb-3">Tratamiento para mascotas</h3>
+                        <p>Contamos con lo mas nuevo en tecnologias para atender a nuestros pacientes y los mejores profesionales de la region</p>
+                        <a class="text-uppercase font-weight-bold" href=""></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Services End -->
+
+    <!-- Sobre nosotros -->
+    <div id="sobre-nosotros" class="container py-5">
+        <div class="row py-5">
+            <div class="col-lg-7 pb-5 pb-lg-0 px-3 px-lg-5">
+                <h4 class="text-secondary mb-3">Sobre Nosotros</h4>
+                <h1 class="display-4 mb-4"><span class="text-primary">Gonzalo</span> & <span class="text-secondary">Vicente</span></h1>
+                <h5 class="text-muted mb-3">Somos colegas desde la universidad y tuvimos la idea de crear nuestra propia Veterinaria para dar el mejor servicio de la region! </h5>
+                <p class="mb-4">En Veterinaria G&V, nos enorgullecemos de ser los mejores de la región. Cuidamos a tu mascota como si fuera nuestra, ofreciendo una amplia gama de servicios premium para garantizar su bienestar y felicidad.</p>
+                <ul class="list-inline">
+                    <li><h5><i class="fa fa-check-double text-secondary mr-3"></i>Mejores precios en productos y remedios</h5></li>
+                    <li><h5><i class="fa fa-check-double text-secondary mr-3"></i>Servicios de Emergencias</h5></li>
+                    <li><h5><i class="fa fa-check-double text-secondary mr-3"></i>Atencion a Domicilio</h5></li>
+                </ul>
+            </div>
+            <div class="col-lg-5">
+                <div class="row px-3">
+                    <div class="col-12 p-0">
+                        <img class="img-fluid w-100" src="{% static 'img/carousel-2.jpg' %}" alt="">
+                    </div>
+                    <div class="col-6 p-0">
+                        <img class="img-fluid w-100" src="{% static 'img/about-2.jpg' %}" alt="">
+                    </div>
+                    <div class="col-6 p-0">
+                        <img class="img-fluid w-100" src="{% static 'img/about-3.jpg' %}" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- About End -->
+
+
+    <!-- Footer Start -->
+    <div class="container-fluid bg-dark text-white mt-5 py-5 px-sm-3 px-md-5">
+        <div class="row pt-5 justify-content-center">
+            <div class="col-lg-4 col-md-12 mb-5">
+                <h1 class="mb-3 display-5 text-capitalize text-white"><span class="text-primary">Pet</span>Lover</h1>
+                <p class="m-0"> Incorporate a nuestra red de salud para tu mascota</p>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid text-white py-4 px-sm-3 px-md-5" style="background: #111111;">
+        <div class="row justify-content-center">
+            <div>
+                <p class="m-0 text-white">
+                    &copy; Todos los derechos reservados. Back End 2024
+                </p>
+            </div>
+        </div>
+    </div>
+    <!-- Footer End -->
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="{% static 'lib/easing/easing.min.js' %}"></script>
+    <script src="{% static 'lib/owlcarousel/owl.carousel.min.js' 5}"></script>
+    <script src="{% static 'lib/tempusdominus/js/moment.min.js' %}"></script>
+    <script src="{% static 'lib/tempusdominus/js/moment-timezone.min.js' %}"></script>
+    <script src="{% static 'lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js' %}"></script>
+
+    <!-- Contact Javascript File -->
+    <script src="{% static 'mail/jqBootstrapValidation.min.js' %}"></script>
+    <script src="{% static 'mail/contact.js' %}"></script>
+
+    <!-- Template Javascript -->
+    <script src="{% static 'js/main.js' %}"></script>
+</body>
+
+</html>

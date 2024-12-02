@@ -1,0 +1,60 @@
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+        <!-- empieza barra lateral Sidebar -->
+        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+            <!-- Sidebar - Brand -->
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" >
+                <div class="sidebar-brand-icon rotate-n-15">
+                    <i class="bi bi-chat-left-heart-fill"></i>
+                </div>
+                <div class="sidebar-brand-text mx-3">Veterinaria G&V</div>
+            </a>
+                
+            <!-- Divider -->
+            <hr class="sidebar-divider my-0">
+
+            <!-- Nav Item - Dashboard -->
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'home' %}"> <!-- agregar index name home-->
+                    <i class="bi bi-house-door-fill"></i>
+                    <span> ir a pagina principal</span></a>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+
+            <!-- Panel para Productos -->
+            <li class="nav-item active"> <!--ACITVE activo SIEMPRE blanco-->
+                <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true"
+                    aria-controls="collapsePages">
+                    <i class="fas fa-fw fa-folder"></i>
+                    <span>Productos</span>
+                </a>
+                <div id="collapsePages" class="collapse show" aria-labelledby="headingPages"
+                    data-parent="#accordionSidebar"> <!-- al tener show esta mostrando siempre en collapse-->
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="{% url 'lista_productos' %}">Lista Productos</a>
+                        <a class="collapse-item" href="{% url 'crear_producto' %}">Crear Producto</a>
+                        <!-- si es super usuario puede ver el boton crear categorias-->
+                        {% if user.is_superuser %} 
+                        <a class="collapse-item" href="{% url 'lista_categorias' %}">Lista Categorias</a>
+                        <a class="collapse-item" href="{% url 'crear_categoria' %}">Crear nueva categoria</a>
+
+                        {% endif %}
+
+                    </div>
+                </div>
+            </li>
+
+            <!--Dejar estas opciones solo para administrador no para usuario normal-->
+
+
+
+            <!-- Sidebar Toggler (Sidebar) -->
+            <div class="text-center d-none d-md-inline">
+                <button class="rounded-circle border-0" id="sidebarToggle"></button>
+            </div>
+
+        </ul>
+        <!-- End of Sidebar -->

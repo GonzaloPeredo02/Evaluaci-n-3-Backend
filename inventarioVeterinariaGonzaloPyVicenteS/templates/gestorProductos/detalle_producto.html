@@ -1,0 +1,24 @@
+{% extends 'gestorProductos/base_productos.html'%}
+
+{% block titulo %}
+Detalle productos
+{% endblock %}
+
+{% block contenido %}
+
+<h1>Detalle de Producto</h1>
+<a href="{% url 'lista_productos' %}" class="btn btn-primary">Volver</a>
+<br><br>
+<div class="p-3  btn btn-secondary" >
+<body>
+    <h2><strong>{{ producto.nombre }}</strong></h2>
+    <p>{{ producto.descripcion }}</p>
+    <p>Precio: {{ producto.precio }}</p>
+    <p>Categoría: {{ producto.categoria.nombre }}</p>
+
+</body>
+
+</div>
+
+{% endblock %}
+

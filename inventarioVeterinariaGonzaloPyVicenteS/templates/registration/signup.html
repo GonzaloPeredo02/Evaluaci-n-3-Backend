@@ -1,0 +1,45 @@
+{% extends 'base/base_login.html' %}
+
+{% block titulo %}
+    Registro de usuario
+{% endblock %}
+
+{% block contenido %}
+<div class="text-center">
+    <h1 class="h4 text-gray-900 mb-4">Bienvenido!</h1>
+</div>
+    <form method="post" class="user">
+        {% csrf_token %}
+        <div class="form-group">
+            <input type="text" class="form-control form-control-user"
+                id="id_username"
+                name="{{ form.username.html_name }}" autocomplete="username" autofocus
+                autocapitalize="none" required placeholder="Nombre de usuario"
+                value="{{ form.username.value|default_if_none:'' }}">
+        </div>
+        <div class="form-group">
+            <input type="password" class="form-control form-control-user"
+                id="id_password1"
+                name="{{ form.password1.html_name }}"
+                autocomplete="new-password"
+                required placeholder="Repite contraseña">
+        </div>
+        <div class="form-group">
+            <input type="password" class="form-control form-control-user"
+                id="id_password2"
+                name="{{ form.password2.html_name }}"
+                autocomplete="new-password"
+                required placeholder="Repite contraseña">
+        </div>
+        <button type="submit" class="btn btn-primary">Registrarse</button>
+        <!--Mostrar los errores del registro-->
+        {% if form.errors %}
+        <div class="alert alert-danger mt-3" role="alert">
+            {% for field, error in form.errors.items %}
+                <strong>{{ field|title }}</strong>:{{ error|join:"," }}<br>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+    </form>
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends 'gestorUser/base_user.html' %}
+
+{% load static %}
+{% block titulo %}
+    PANEL ADMINISTRATIVO 👍
+{% endblock %}
+
+{% block contenido %} 
+
+    {% if user.is_authenticated %}
+        {% if user.is_superuser %}
+        <h1>Bienvenido, {{ user.username }} </h1>
+
+        {% else %}
+        <h1> Bienvenido, {{ user.username }} </h>
+
+        {% endif %}
+<!-- 
+    {% else %}
+    <h1>Bienvenido, No estas autenticado</h1>
+    <a href="{% url 'login' %}" class="btn btn-info" >Ingresar</a> url que viene por defecto
+    {% endif %} -->
+
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'gestorProductos/base_productos.html'%}
+
+{% block titulo %}
+Detalle categoria
+{% endblock %}
+
+{% block contenido %}
+
+<h1>Detalle de categoria</h1>
+<a href="{% url 'lista_categorias' %}" class="btn btn-primary">Volver</a>
+<br><br>
+<div class="p-3  btn btn-secondary" >
+<body>
+    <h2><strong>{{ categoria.nombre }}</strong></h2>
+    <p>{{ categoria.descripcion }}</p>
+
+</body>
+
+</div>
+
+{% endblock %}
+

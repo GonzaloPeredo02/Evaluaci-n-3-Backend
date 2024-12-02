@@ -1,0 +1,26 @@
+{% extends 'gestorProductos/base_productos.html'%}
+
+{% block titulo %}
+Detalle categoria
+{% endblock %}
+
+{% block contenido %}
+
+<body>
+    <h1>{% if form.instance.pk %}Editar{% else %}Crear{% endif %} Categoría</h1>
+    <a href="{% url 'lista_categorias' %}" class="btn btn-primary" >Volver</a>
+    <br><br>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-success" >{% if form.instance.pk %}Actualizar{% else %}Crear{% endif %}</button>
+    </form>
+    <br><br>
+    <a href="{% url 'lista_categorias' %}"  class="btn btn-secondary" >Ver a la lista de categorías</a>
+</body>
+</html>
+
+
+{% endblock %}
+
+

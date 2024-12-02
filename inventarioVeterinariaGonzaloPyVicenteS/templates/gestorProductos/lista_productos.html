@@ -1,0 +1,86 @@
+{% extends 'gestorProductos/base_productos.html' %}
+
+{% load static %}
+
+{% block titulo %}
+Lista productos
+{% endblock %}
+
+{% block contenido %}
+
+<h1 class="justify-content-center" >Lista de Productos</h1>
+
+<a href="{% url 'gestor_usuarios' %}" class="btn btn-primary" >volver</a>
+<br><br>
+
+<div class="container">
+
+<table id="example" class="table table-striped" style="width:100%">
+    <thead class="table-info">
+        <tr>
+            <th>#</th>
+            <th>Nombre</th>
+            <th>Descripcion</th>
+            <th>Precio</th>
+            <th>Categoría</th>
+            <th>Usuario</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody class="table-light " >
+        {% if productos %}
+            {% for producto in productos %}
+                <tr>
+                    <td>{{ producto.id }}</td>
+                    <td><a href="{% url 'detalle_producto' producto.pk %}">{{ producto.nombre }}</a></td>
+                    <td>{{ producto.descripcion }}</td>
+                    <td>{{ producto.precio }}</td>
+                    <td>{{ producto.categoria }}</td>
+                    <td>{{ producto.usuario }}</td>
+                    <td>
+                    {% if user.is_superuser %}
+                    <a href="{% url 'editar_producto' producto.pk %}" class="btn btn-warning" >Editar</a>
+                    <!-- hacen refencia desde lafk para traer lso datos-->
+                    <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal" data-url="{% url 'eliminar_producto' producto.pk %}">
+                        Eliminar
+                    </button>
+                    {% else %}
+                        <a href="{% url 'editar_producto' producto.pk %}" class="btn btn-warning" >Editar</a>
+                    {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+        {% else %}
+            <tr>
+                <td colspan="7">No hay productos disponibles.</td>
+            </tr>
+        {% endif %}
+    </tbody>
+</table>
+
+<!-- referenciamos url de crear producto-->
+<a href="{% url 'crear_producto' %}" class="btn btn-success">Crear nuevo producto</a>
+<!-- crear button referencia a categorias adema acceso solo de admin 👍-->
+
+
+<!-- Modal de confirmación bs5-->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Confirmar eliminación</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                ¿Estás seguro de que deseas eliminar este producto?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <a id="confirmDeleteButton" class="btn btn-danger" href="#">Eliminar</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
